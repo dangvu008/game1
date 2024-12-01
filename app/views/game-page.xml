@@ -1,0 +1,40 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-blue-900">
+    <ActionBar title="Math Battle" class="bg-blue-800 text-white" />
+    
+    <GridLayout rows="auto, *, auto" class="p-4">
+        <!-- Game Stats -->
+        <GridLayout row="0" columns="*, *, *" class="mb-4">
+            <Label col="0" text="{{ 'Score: ' + gameState.score }}" class="text-lg text-white" />
+            <Label col="1" text="{{ 'Lives: ' + gameState.lives }}" class="text-lg text-white" />
+            <Label col="2" text="{{ 'Time: ' + gameState.timeLeft }}" class="text-lg text-white" />
+        </GridLayout>
+
+        <!-- Game Area -->
+        <StackLayout row="1" class="bg-blue-800 rounded-lg p-6 m-2">
+            <GridLayout rows="auto, auto" columns="*, auto, *" class="mb-8">
+                <Label row="0" col="0" text="{{ gameState.currentProblem.leftNumber }}" 
+                       class="text-4xl text-white text-center" />
+                <Label row="0" col="1" text="{{ gameState.currentProblem.operator }}" 
+                       class="text-4xl text-white text-center mx-4" />
+                <Label row="0" col="2" text="{{ gameState.currentProblem.rightNumber }}" 
+                       class="text-4xl text-white text-center" />
+                
+                <GridLayout row="1" colSpan="3" columns="*, *, *" class="mt-4">
+                    <Button col="0" text="{{ gameState.currentProblem.options[0] }}" 
+                            tap="onAnswerTap" class="bg-blue-500 text-white" />
+                    <Button col="1" text="{{ gameState.currentProblem.options[1] }}" 
+                            tap="onAnswerTap" class="bg-blue-500 text-white" />
+                    <Button col="2" text="{{ gameState.currentProblem.options[2] }}" 
+                            tap="onAnswerTap" class="bg-blue-500 text-white" />
+                </GridLayout>
+            </GridLayout>
+        </StackLayout>
+
+        <!-- Power-ups -->
+        <GridLayout row="2" columns="*, *, *" class="mt-4">
+            <Button col="0" text="🕒 +5s" tap="onPowerUpTap" class="bg-blue-600 text-white" />
+            <Button col="1" text="❤️ +1" tap="onPowerUpTap" class="bg-blue-600 text-white" />
+            <Button col="2" text="💫 Skip" tap="onPowerUpTap" class="bg-blue-600 text-white" />
+        </GridLayout>
+    </GridLayout>
+</Page>
